@@ -78,13 +78,13 @@ class EvtInfoContri extends Factory implements FactoryInterface
         $this->dom->addChild(
             $idePeriodo,
             "iniValid",
-            $this->std->inivalid,
+            $this->std->ideperiodo->inivalid,
             true
         );
         $this->dom->addChild(
             $idePeriodo,
             "fimValid",
-            !empty($this->std->fimvalid) ? $this->std->fimvalid : null,
+            !empty($this->std->ideperiodo->fimvalid) ? $this->std->ideperiodo->fimvalid : null,
             false
         );
         $infocadastro = null;

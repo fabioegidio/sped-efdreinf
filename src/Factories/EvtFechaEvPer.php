@@ -55,7 +55,7 @@ class EvtFechaEvPer extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideEvento,
             "perApur",
-            $this->std->perapur,
+            $this->date->format('Y-m'),
             true
         );
         $this->dom->addChild(
@@ -113,49 +113,49 @@ class EvtFechaEvPer extends Factory implements FactoryInterface
         $this->dom->addChild(
             $infoFech,
             "evtServTm",
-            $this->std->evtservtm,
+            $this->std->infofech->evtservtm,
             true
         );
         $this->dom->addChild(
             $infoFech,
             "evtServPr",
-            $this->std->evtservpr,
+            $this->std->infofech->evtservpr,
             true
         );
         $this->dom->addChild(
             $infoFech,
             "evtAssDespRec",
-            $this->std->evtassdesprec,
+            $this->std->infofech->evtassdesprec,
             true
         );
         $this->dom->addChild(
             $infoFech,
             "evtAssDespRep",
-            $this->std->evtassdesprep,
+            $this->std->infofech->evtassdesprep,
             true
         );
         $this->dom->addChild(
             $infoFech,
             "evtComProd",
-            $this->std->evtcomprod,
+            $this->std->infofech->evtcomprod,
             true
         );
         $this->dom->addChild(
             $infoFech,
             "evtCPRB",
-            $this->std->evtcprb,
+            $this->std->infofech->evtcprb,
             true
         );
         $this->dom->addChild(
             $infoFech,
             "evtPgtos",
-            $this->std->evtpgtos,
-            true
+            !empty($this->std->infofech->evtpgtos) ? !empty($this->std->infofech->evtpgtos) : null,
+            false
         );
         $this->dom->addChild(
             $infoFech,
             "compSemMovto",
-            !empty($this->std->compsemmovto) ? $this->std->compsemmovto : null,
+            !empty($this->std->infofech->compsemmovto) ? $this->std->infofech->compsemmovto : null,
             false
         );
         $this->node->appendChild($infoFech);
