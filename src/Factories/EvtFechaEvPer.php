@@ -55,7 +55,7 @@ class EvtFechaEvPer extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideEvento,
             "perApur",
-            $this->date->format('Y-m'),
+            $this->std->iderespinf->perapur,
             true
         );
         $this->dom->addChild(
