@@ -55,37 +55,37 @@ class EvtServPrest extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideEvento,
             "indRetif",
-            $this->std->indretif,
+            $this->std->indRetif,
             true
         );
         $this->dom->addChild(
             $ideEvento,
             "nrRecibo",
-            !empty($this->std->nrrecibo) ? $this->std->nrrecibo : null,
+            !empty($this->std->nrRecibo) ? $this->std->nrRecibo : null,
             true
         );
         $this->dom->addChild(
             $ideEvento,
             "perApur",
-            $this->std->perapur,
+            $this->std->perApur,
             true
         );
         $this->dom->addChild(
             $ideEvento,
             "tpAmb",
-            $this->tpAmb,
+            $this->std->tpAmb,
             true
         );
         $this->dom->addChild(
             $ideEvento,
             "procEmi",
-            $this->procEmi,
+            $this->std->procEmi,
             true
         );
         $this->dom->addChild(
             $ideEvento,
             "verProc",
-            $this->verProc,
+            $this->std->verProc,
             true
         );
         $this->node->insertBefore($ideEvento, $ideContri);
@@ -95,72 +95,72 @@ class EvtServPrest extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideEstabPrest,
             "tpInscEstabPrest",
-            $this->std->tpinscestabprest,
+            $this->std->infoServPrest->ideEstabPrest->tpInscEstabPrest,
             true
         );
         $this->dom->addChild(
             $ideEstabPrest,
             "nrInscEstabPrest",
-            $this->std->nrinscestabprest,
+            $this->std->infoServPrest->ideEstabPrest->nrInscEstabPrest,
             true
         );
         $ideTomador = $this->dom->createElement("ideTomador");
         $this->dom->addChild(
             $ideTomador,
             "tpInscTomador",
-            $this->std->tpinsctomador,
+            $this->std->infoServPrest->ideEstabPrest->ideTomador->tpInscTomador,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "nrInscTomador",
-            $this->std->nrinsctomador,
+            $this->std->infoServPrest->ideEstabPrest->ideTomador->nrInscTomador,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "indObra",
-            $this->std->indobra,
+            $this->std->infoServPrest->ideEstabPrest->ideTomador->indObra,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalBruto",
-            number_format($this->std->vlrtotalbruto, 2, ',', ''),
+            number_format($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalBruto, 2, ',', ''),
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalBaseRet",
-            number_format($this->std->vlrtotalbaseret, 2, ',', ''),
+            number_format($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalBaseRet, 2, ',', ''),
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalRetPrinc",
-            number_format($this->std->vlrtotalretprinc, 2, ',', ''),
+            number_format($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalRetPrinc, 2, ',', ''),
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalRetAdic",
-            !empty($this->std->vlrtotalretadic) ? number_format($this->std->vlrtotalretadic, 2, ',', '') : null,
+            !empty($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalRetAdic) ? number_format($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalRetAdic, 2, ',', '') : null,
             false
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalNRetPrinc",
-            !empty($this->std->vlrtotalnretprinc) ? number_format($this->std->vlrtotalnretprinc, 2, ',', '') : null,
+            !empty($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalNRetPrinc) ? number_format($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalNRetPrinc, 2, ',', '') : null,
             false
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalNRetAdic",
-            !empty($this->std->vlrtotalnretadic) ? number_format($this->std->vlrtotalnretadic, 2, ',', '') : null,
+            !empty($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalNRetAdic) ? number_format($this->std->infoServPrest->ideEstabPrest->ideTomador->vlrTotalNRetAdic, 2, ',', '') : null,
             false
         );
         
-        foreach ($this->std->nfs as $n) {
+        foreach ($this->std->infoServPrest->ideEstabPrest->ideTomador->nfs as $n) {
             $nfs = $this->dom->createElement("nfs");
             $this->dom->addChild(
                 $nfs,
@@ -171,88 +171,88 @@ class EvtServPrest extends Factory implements FactoryInterface
             $this->dom->addChild(
                 $nfs,
                 "numDocto",
-                $n->numdocto,
+                $n->numDocto,
                 true
             );
             $this->dom->addChild(
                 $nfs,
                 "dtEmissaoNF",
-                $n->dtemissaonf,
+                $n->dtEmissaoNF,
                 true
             );
             $this->dom->addChild(
                 $nfs,
                 "vlrBruto",
-                number_format($n->vlrbruto, 2, ',', ''),
+                number_format($n->vlrBruto, 2, ',', ''),
                 true
             );
             $this->dom->addChild(
                 $nfs,
                 "obs",
-                !empty($n->obs) ? $n->obs : null,
+                $n->obs ?? null,
                 false
             );
             
-            foreach ($n->infotpserv as $its) {
+            foreach ($n->infoTpServ as $its) {
                 $infoTpServ = $this->dom->createElement("infoTpServ");
                 $this->dom->addChild(
                     $infoTpServ,
                     "tpServico",
-                    $its->tpservico,
+                    $its->tpServico,
                     true
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrBaseRet",
-                    number_format($its->vlrbaseret, 2, ',', ''),
+                    number_format($its->vlrBaseRet, 2, ',', ''),
                     true
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrRetencao",
-                    number_format($its->vlrretencao, 2, ',', ''),
+                    number_format($its->vlrRetencao, 2, ',', ''),
                     true
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrRetSub",
-                    !empty($its->vlrretsub) ? number_format($its->vlrretsub, 2, ',', '') : null,
+                    !empty($its->vlrRetSub) ? number_format($its->vlrRetSub, 2, ',', '') : null,
                     false
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrNRetPrinc",
-                    !empty($its->vlrnretprinc) ? number_format($its->vlrnretprinc, 2, ',', '') : null,
+                    !empty($its->vlrNRetPrinc) ? number_format($its->vlrNRetPrinc, 2, ',', '') : null,
                     false
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrServicos15",
-                    !empty($its->vlrservicos15) ? number_format($its->vlrservicos15, 2, ',', '') : null,
+                    !empty($its->vlrServicos15) ? number_format($its->vlrServicos15, 2, ',', '') : null,
                     false
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrServicos20",
-                    !empty($its->vlrservicos20) ? number_format($its->vlrservicos20, 2, ',', '') : null,
+                    !empty($its->vlrServicos20) ? number_format($its->vlrServicos20, 2, ',', '') : null,
                     false
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrServicos25",
-                    !empty($its->vlrservicos25) ? number_format($its->vlrservicos25, 2, ',', '') : null,
+                    !empty($its->vlrServicos25) ? number_format($its->vlrServicos25, 2, ',', '') : null,
                     false
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrAdicional",
-                    !empty($its->vlradicional) ? number_format($its->vlradicional, 2, ',', '') : null,
+                    !empty($its->vlrAdicional) ? number_format($its->vlrAdicional, 2, ',', '') : null,
                     false
                 );
                 $this->dom->addChild(
                     $infoTpServ,
                     "vlrNRetAdic",
-                    !empty($its->vlrnretadic) ? number_format($its->vlrnretadic, 2, ',', '') : null,
+                    !empty($its->vlrNRetAdic) ? number_format($its->vlrNRetAdic, 2, ',', '') : null,
                     false
                 );
 
@@ -260,61 +260,61 @@ class EvtServPrest extends Factory implements FactoryInterface
             }
             $ideTomador->appendChild($nfs);
         }
-        if (!empty($this->std->infoprocretpr)) {
-            foreach ($this->std->infoprocretpr as $irp) {
+        if (!empty($this->std->infoServPrest->ideEstabPrest->ideTomador->infoProcRetPr)) {
+            foreach ($this->std->infoServPrest->ideEstabPrest->ideTomador->infoProcRetPr as $irp) {
                 $infoProcRetPr = $this->dom->createElement("infoProcRetPr");
                 $this->dom->addChild(
                     $infoProcRetPr,
                     "tpProcRetPrinc",
-                    $irp->tpprocretprinc,
+                    $irp->tpProcRetPrinc,
                     true
                 );
                 $this->dom->addChild(
                     $infoProcRetPr,
                     "nrProcRetPrinc",
-                    $irp->nrprocretprinc,
+                    $irp->nrProcRetPrinc,
                     true
                 );
                 $this->dom->addChild(
                     $infoProcRetPr,
                     "codSuspPrinc",
-                    !empty($irp->codsuspprinc) ? $irp->codsuspprinc : null,
+                    $irp->codSuspPrinc ?? null,
                     false
                 );
                 $this->dom->addChild(
                     $infoProcRetPr,
                     "valorPrinc",
-                    number_format($irp->valorprinc, 2, ',', ''),
+                    number_format($irp->valorPrinc, 2, ',', ''),
                     true
                 );
                 $ideTomador->appendChild($infoProcRetPr);
             }
         }
-        if (!empty($this->std->infoprocretad)) {
-            foreach ($this->std->infoprocretad as $rad) {
+        if (!empty($this->std->infoServPrest->ideEstabPrest->ideTomador->infoProcRetAd)) {
+            foreach ($this->std->infoServPrest->ideEstabPrest->ideTomador->infoProcRetAd as $rad) {
                 $infoProcRetAd = $this->dom->createElement("infoProcRetAd");
                 $this->dom->addChild(
                     $infoProcRetAd,
                     "tpProcRetAdic",
-                    $rad->tpprocretadic,
+                    $rad->tpProcRetAdic,
                     true
                 );
                 $this->dom->addChild(
                     $infoProcRetAd,
                     "nrProcRetAdic",
-                    $rad->nrprocretadic,
+                    $rad->nrProcRetAdic,
                     true
                 );
                 $this->dom->addChild(
                     $infoProcRetAd,
                     "codSuspAdic",
-                    !empty($rad->codsuspadic) ? $rad->codsuspadic : null,
+                    $rad->codSuspAdic ?? null,
                     false
                 );
                 $this->dom->addChild(
                     $infoProcRetAd,
                     "valorAdic",
-                    number_format($rad->valoradic, 2, ',', ''),
+                    number_format($rad->valorAdic, 2, ',', ''),
                     true
                 );
                 $ideTomador->appendChild($infoProcRetAd);
