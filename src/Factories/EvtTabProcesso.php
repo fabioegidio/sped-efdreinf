@@ -77,13 +77,13 @@ class EvtTabProcesso extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideProcesso,
             "tpProc",
-            $this->std->tpproc,
+            $this->std->ideprocesso->tpproc,
             true
         );
         $this->dom->addChild(
             $ideProcesso,
             "nrProc",
-            $this->std->nrproc,
+            $this->std->ideprocesso->nrproc,
             true
         );
         
@@ -93,19 +93,19 @@ class EvtTabProcesso extends Factory implements FactoryInterface
             $this->dom->addChild(
                 $ideProcesso,
                 "iniValid",
-                $this->std->inivalid,
+                $this->std->ideprocesso->inivalid,
                 true
             );
             $this->dom->addChild(
                 $ideProcesso,
                 "fimValid",
-                !empty($this->std->fimvalid) ? $this->std->fimvalid : null,
+                !empty($this->std->ideprocesso->fimvalid) ? $this->std->ideprocesso->fimvalid : null,
                 false
             );
             $this->dom->addChild(
                 $ideProcesso,
                 "indAutoria",
-                $this->std->indautoria,
+                $this->std->ideprocesso->indautoria,
                 true
             );
         } elseif ($this->std->modo == 'ALT') {
@@ -114,19 +114,19 @@ class EvtTabProcesso extends Factory implements FactoryInterface
             $this->dom->addChild(
                 $ideProcesso,
                 "iniValid",
-                $this->std->inivalid,
+                $this->std->ideprocesso->inivalid,
                 true
             );
             $this->dom->addChild(
                 $ideProcesso,
                 "fimValid",
-                !empty($this->std->fimvalid) ? $this->std->fimvalid : null,
+                !empty($this->std->ideprocesso->fimvalid) ? $this->ideprocesso->std->fimvalid : null,
                 false
             );
             $this->dom->addChild(
                 $ideProcesso,
                 "indAutoria",
-                $this->std->indautoria,
+                $this->std->ideprocesso->indautoria,
                 true
             );
         } else {
@@ -135,49 +135,49 @@ class EvtTabProcesso extends Factory implements FactoryInterface
             $this->dom->addChild(
                 $ideProcesso,
                 "iniValid",
-                $this->std->inivalid,
+                $this->std->ideprocesso->inivalid,
                 true
             );
             $this->dom->addChild(
                 $ideProcesso,
                 "fimValid",
-                !empty($this->std->fimvalid) ? $this->std->fimvalid : null,
+                !empty($this->std->ideprocesso->fimvalid) ? $this->ideprocesso->std->fimvalid : null,
                 false
             );
         }
-        foreach ($this->std->infosusp as $i) {
+        foreach ($this->std->ideprocesso->infosusp as $i) {
             $infosusp = $this->dom->createElement("infoSusp");
             $this->dom->addChild(
                 $infosusp,
                 "codSusp",
-                !empty($i->codsusp) ? $i->codsusp : null,
+                !empty($i->codSusp) ? $i->codSusp : null,
                 false
             );
             $this->dom->addChild(
                 $infosusp,
                 "indSusp",
-                $i->indsusp,
+                $i->indSusp,
                 true
             );
             $this->dom->addChild(
                 $infosusp,
                 "dtDecisao",
-                $i->dtdecisao,
+                $i->dtDecisao,
                 true
             );
             $this->dom->addChild(
                 $infosusp,
                 "indDeposito",
-                $i->inddeposito,
+                $i->indDeposito,
                 true
             );
             if ($this->std->modo !== 'EXC') {
                 $ideProcesso->appendChild($infosusp);
             }
         }
-        if (!empty($this->std->dadosprocjud)) {
+        if (!empty($this->std->ideprocesso->dadosprocjud)) {
             $dadosProcJud = $this->dom->createElement("dadosProcJud");
-            $d = $this->std->dadosprocjud;
+            $d = $this->std->ideprocesso->dadosprocjud;
             $this->dom->addChild(
                 $dadosProcJud,
                 "ufVara",
