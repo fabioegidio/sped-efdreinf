@@ -85,82 +85,83 @@ class EvtServPrest extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideEvento,
             "verProc",
-            $this->std->verproc,
+            $this->verProc,
             true
         );
+
         $this->node->insertBefore($ideEvento, $ideContri);
-        
+
         $info = $this->dom->createElement("infoServPrest");
         $ideEstabPrest = $this->dom->createElement("ideEstabPrest");
         $this->dom->addChild(
             $ideEstabPrest,
             "tpInscEstabPrest",
-            $this->std->infoservprest->ideestabprest->tpinscestabprest,
+            $this->std->ideestabprest->tpinscestabprest,
             true
         );
         $this->dom->addChild(
             $ideEstabPrest,
             "nrInscEstabPrest",
-            $this->std->infoservprest->ideestabprest->nrinscestabprest,
+            $this->std->ideestabprest->nrinscestabprest,
             true
         );
         $ideTomador = $this->dom->createElement("ideTomador");
         $this->dom->addChild(
             $ideTomador,
             "tpInscTomador",
-            $this->std->infoservprest->ideestabprest->idetomador->tpinsctomador,
+            $this->std->ideestabprest->idetomador->tpinsctomador,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "nrInscTomador",
-            $this->std->infoservprest->ideestabprest->idetomador->nrinsctomador,
+            $this->std->ideestabprest->idetomador->nrinsctomador,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "indObra",
-            $this->std->infoservprest->ideestabprest->idetomador->indobra,
+            $this->std->ideestabprest->idetomador->indobra,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalBruto",
-            number_format($this->std->infoservprest->ideestabprest->idetomador->vlrtotalbruto, 2, ',', ''),
+            number_format($this->std->ideestabprest->idetomador->vlrtotalbruto, 2, ',', ''),
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalBaseRet",
-            number_format($this->std->infoservprest->ideestabprest->idetomador->vlrtotalbaseret, 2, ',', ''),
+            number_format($this->std->ideestabprest->idetomador->vlrtotalbaseret, 2, ',', ''),
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalRetPrinc",
-            number_format($this->std->infoservprest->ideestabprest->idetomador->vlrtotalretprinc, 2, ',', ''),
+            isset($this->std->ideestabprest->idetomador->vlrtotalretprinc) ? number_format($this->std->ideestabprest->idetomador->vlrtotalretprinc, 2, ',', '') : null,
             true
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalRetAdic",
-            !empty($this->std->infoservprest->ideestabprest->idetomador->vlrtotalretadic) ? number_format($this->std->infoservprest->ideestabprest->idetomador->vlrtotalretadic, 2, ',', '') : null,
+            !empty($this->std->ideestabprest->idetomador->vlrtotalretadic) ? number_format($this->std->ideestabprest->idetomador->vlrtotalretadic, 2, ',', '') : null,
             false
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalNRetPrinc",
-            !empty($this->std->infoservprest->ideestabprest->idetomador->vlrtotalnretprinc) ? number_format($this->std->infoservprest->ideestabprest->idetomador->vlrtotalnretprinc, 2, ',', '') : null,
+            !empty($this->std->ideestabprest->idetomador->vlrtotalnretprinc) ? number_format($this->std->ideestabprest->idetomador->vlrtotalnretprinc, 2, ',', '') : null,
             false
         );
         $this->dom->addChild(
             $ideTomador,
             "vlrTotalNRetAdic",
-            !empty($this->std->infoservprest->ideestabprest->idetomador->vlrtotalnretadic) ? number_format($this->std->infoservprest->ideestabprest->idetomador->vlrtotalnretadic, 2, ',', '') : null,
+            !empty($this->std->ideestabprest->idetomador->vlrtotalnretadic) ? number_format($this->std->ideestabprest->idetomador->vlrtotalnretadic, 2, ',', '') : null,
             false
         );
-        
-        foreach ($this->std->infoservprest->ideestabprest->idetomador->nfs as $n) {
+
+        foreach ($this->std->ideestabprest->idetomador->nfs as $n) {
             $nfs = $this->dom->createElement("nfs");
             $this->dom->addChild(
                 $nfs,
@@ -192,8 +193,8 @@ class EvtServPrest extends Factory implements FactoryInterface
                 $n->obs ?? null,
                 false
             );
-            
-            foreach ($n->infotpserv as $its) {
+
+            foreach ($n->infoTpServ as $its) {
                 $infoTpServ = $this->dom->createElement("infoTpServ");
                 $this->dom->addChild(
                     $infoTpServ,
@@ -260,8 +261,8 @@ class EvtServPrest extends Factory implements FactoryInterface
             }
             $ideTomador->appendChild($nfs);
         }
-        if (!empty($this->std->infoservprest->ideestabprest->idetomador->infoprocretpr)) {
-            foreach ($this->std->infoservprest->ideestabprest->idetomador->infoprocretpr as $irp) {
+        if (!empty($this->std->ideestabprest->idetomador->infoprocretpr)) {
+            foreach ($this->std->ideestabprest->idetomador->infoprocretpr as $irp) {
                 $infoProcRetPr = $this->dom->createElement("infoProcRetPr");
                 $this->dom->addChild(
                     $infoProcRetPr,
@@ -290,8 +291,8 @@ class EvtServPrest extends Factory implements FactoryInterface
                 $ideTomador->appendChild($infoProcRetPr);
             }
         }
-        if (!empty($this->std->infoservprest->ideestabprest->idetomador->infoprocretad)) {
-            foreach ($this->std->infoservprest->ideestabprest->idetomador->infoprocretad as $rad) {
+        if (!empty($this->std->ideestabprest->idetomador->infoprocretad)) {
+            foreach ($this->std->ideestabprest->idetomador->infoprocretad as $rad) {
                 $infoProcRetAd = $this->dom->createElement("infoProcRetAd");
                 $this->dom->addChild(
                     $infoProcRetAd,
