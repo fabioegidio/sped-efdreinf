@@ -55,7 +55,7 @@ class EvtFechaEvPer extends Factory implements FactoryInterface
         $this->dom->addChild(
             $ideEvento,
             "perApur",
-            $this->std->iderespinf->perapur,
+            $this->std->perapur,
             true
         );
         $this->dom->addChild(
@@ -149,7 +149,7 @@ class EvtFechaEvPer extends Factory implements FactoryInterface
         $this->dom->addChild(
             $infoFech,
             "evtPgtos",
-            !empty($this->std->infofech->evtpgtos) ? !empty($this->std->infofech->evtpgtos) : null,
+            !empty($this->std->infofech->evtpgtos) ? $this->std->infofech->evtpgtos : null,
             false
         );
         $this->dom->addChild(
