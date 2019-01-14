@@ -197,12 +197,11 @@ abstract class Factory
     }
 
     /**
-    /**
      * Change properties names of stdClass to lower case
      * @param stdClass $data
      * @return stdClass
      */
-    public static function propertiesToLower(stdClass $data)
+    protected static function propertiesToLower(stdClass $data)
     {
         $properties = get_object_vars($data);
         $clone = new stdClass();
