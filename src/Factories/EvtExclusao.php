@@ -42,7 +42,7 @@ class EvtExclusao extends Factory implements FactoryInterface
         $params->evtAlias = 'R-9000';
         parent::__construct($config, $std, $params, $certificate, $data);
     }
-    
+
     /**
      * Node constructor
      */
@@ -70,25 +70,26 @@ class EvtExclusao extends Factory implements FactoryInterface
             $this->verProc,
             true
         );
+
         $this->node->insertBefore($ideEvento, $ideContri);
         //tag deste evento em particular
         $infoExclusao = $this->dom->createElement("infoExclusao");
         $this->dom->addChild(
             $infoExclusao,
             "tpEvento",
-            $this->std->tpevento,
+            $this->std->infoexclusao->tpevento,
             true
         );
         $this->dom->addChild(
             $infoExclusao,
             "nrRecEvt",
-            $this->std->nrrecevt,
+            $this->std->infoexclusao->nrrecevt,
             true
         );
         $this->dom->addChild(
             $infoExclusao,
             "perApur",
-            $this->std->perapur,
+            $this->std->infoexclusao->perapur,
             true
         );
         $this->node->appendChild($infoExclusao);
